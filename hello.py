@@ -1,26 +1,12 @@
-fruits = ['사과', '배', '배', '감', '수박', '귤', '딸기', '사과', '배', '수박']
-people = [{'name': 'bob', 'age': 20},
-          {'name': 'carry', 'age': 38},
-          {'name': 'john', 'age': 7},
-          {'name': 'smith', 'age': 17},
-          {'name': 'ben', 'age': 27}]
+import requests # requests 라이브러리 설치 필요
 
-for fruit in fruits:
-    print(fruit)
+r = requests.get('http://spartacodingclub.shop/sparta_api/seoulair')
+rjson = r.json()
 
-for person in people:
-    if person['age'] > 20:
-        print(person['name'])
+rows = rjson['RealtimeCityAir']['row']
 
-def sum(a, b):
-    return a+b
-result = sum(1,2)
-print(result)
-
-def is_adult(age):
-    if age > 20:
-        print('성인입니다')
-    else:
-        print('청소년입니다')
-
-is_adult(30)
+for row in rows:
+    gu_name = row['MSRSTE_NM']
+    gu_mise = row['IDEX_MVL']
+    if gu_mise < 100:
+        print(gu_name, gu_mise)
