@@ -31,6 +31,7 @@ for i in range(2, 21):
         break
     print(i, end=' ')
 
+
 list_a = [1,2,3,4]
 list_b = [2,3,4,5]
 result = []
@@ -39,6 +40,7 @@ for a in list_a:
         if a == b:
             result.append(a)
 print(result)
+
 
 def remainder(param, num = 5, div = 2):
     return num % div
