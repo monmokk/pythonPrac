@@ -2,7 +2,6 @@ import requests
 
 r = requests.get('http://spartacodingclub.shop/sparta_api/seoulair')
 rjson = r.json()
-
 rows = rjson['RealtimeCityAir']['row']
 
 for row in rows:
@@ -20,9 +19,7 @@ print(str1[2:4], str1[:4], str1[8:], str1[:-1], str1[:])
 str2 = 'Welcome'
 str3 = 'Hello'
 print(str3 + str2 * 2)
-
 print("code" in "codestates")
-
 print(2 ** 3 * 3)
 
 for i in range(2, 21):
@@ -30,7 +27,6 @@ for i in range(2, 21):
         print()
         break
     print(i, end=' ')
-
 
 list_a = [1,2,3,4]
 list_b = [2,3,4,5]
@@ -41,10 +37,8 @@ for a in list_a:
             result.append(a)
 print(result)
 
-
 def remainder(param, num = 5, div = 2):
     return num % div
-
 print(remainder(param=7))
 
 s = [11,22,33,44,55]
@@ -59,7 +53,6 @@ def sort(unsort_list):
 
         if prev_position >= 0 and unsort_list[prev_position] >= compare_value:
             unsort_list[prev_position+1] = unsort_list[prev_position]
-
             prev_position = prev_position -1
     return unsort_list
 
