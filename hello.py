@@ -1,12 +1,11 @@
 import requests
+from bs4 import BeautifulSoup
+# 브라우저에서 call 날린 것 처럼 사용
+headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+data = requests.get('https://movie.naver.com/movie/sdb/rank/rmovie.naver?sel=pnt&date=20210829',headers=headers)
 
-r = requests.get('http://spartacodingclub.shop/sparta_api/seoulair')
-rjson = r.json()
-rows = rjson['RealtimeCityAir']['row']
+soup = BeautifulSoup(data.text, 'html.parser')
 
-for row in rows:
-    gu_name = row['MSRSTE_NM']
-    gu_mise = row['IDEX_MVL']
-    if gu_mise < 100:
-        print(gu_name, gu_mise)
-
+title = soup.select_one('#old_content > table > tbody > tr:nth-child(2) > td.title > div > a')
+# print(title.text)
+# print(title['href'])
