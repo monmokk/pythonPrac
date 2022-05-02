@@ -9,3 +9,13 @@ soup = BeautifulSoup(data.text, 'html.parser')
 title = soup.select_one('#old_content > table > tbody > tr:nth-child(2) > td.title > div > a')
 # print(title.text)
 # print(title['href'])
+
+movies = soup.select('#old_content > table > tbody > tr')
+
+for movie in movies:
+    a = movie.select_one('td.title > div > a')
+    if a is not None:
+        title = a.text
+        rank = movie.select_one('td:nth-child(1) > img')['alt']
+        star = movie.select_one('td.point').text
+        print(title, rank, star)
