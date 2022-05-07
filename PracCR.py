@@ -1,11 +1,10 @@
 import json
 import re
-import traceback
 
 import requests
 from bs4 import BeautifulSoup
 
-headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
 url = 'https://www.diffordsguide.com'
 search_url = '/cocktails/search?include%5Bdg%5D=1&gentle_to_boozy%5B%5D=0&gentle_to_boozy%5B%5D=10&sweet_to_sour%5B%5D=0&sweet_to_sour%5B%5D=10&calories%5B%5D=0&calories%5B%5D=9'
 
@@ -18,7 +17,6 @@ count = 0
 for li in lists:
     cnt = 0
 
-    garnish = ""
     abv = 0
     abv_lv = 0
     recipe = list()
