@@ -14,10 +14,10 @@ lists = soup.select('#search-form > div.grid-x > a ')
 
 count = 0
 
+abv = 0
 for li in lists:
     cnt = 0
 
-    abv = 0
     abv_lv = 0
     recipe = list()
     img = li.select_one('div > div > img')['src']
@@ -25,7 +25,7 @@ for li in lists:
 
     # if count == 2:
     #     break
-    #
+
     href = li.get('href')
     data = requests.get(url+href, headers=headers)
     soup = BeautifulSoup(data.text, 'html.parser')
@@ -37,20 +37,20 @@ for li in lists:
     abv_li = list(soup.find("ul", "no-margin-bottom").children)
     abv_t = abv_li[3].get_text()
     try:
-        abv = re.findall("\d+.\d+", abv_t)[0]
+        abv = float(re.findall("\d+.\d+", abv_t)[0])
 
-        if abv <= 10:
+        if abv <= 10.0:
             abv_lv = 1
-        elif 10 <= abv <= 20:
+        elif 10.0 <= abv <= 20.0:
             abv_lv = 2
-        elif 20 <= abv <= 30:
+        elif 20.0 <= abv <= 30.0:
             abv_lv = 3
-        elif 30 <= abv <= 40:
+        elif 30.0 <= abv <= 40.0:
             abv_lv = 4
-        elif 40 <= abv <= 50:
+        elif 40.0 <= abv <= 50.0:
             abv_lv = 5
-        else: abv_lv = 6
-
+        else:
+            abv_lv = 6
     except Exception as e:
         abv = 0.0
         abv_lv = 1
