@@ -124,6 +124,7 @@ def extract_cocktail_collection(url):
             #     ingredient_name = ingredient.split(sep='fresh')[1]
             #     ingredients.append(ingredient_amount + 'fresh')
 
+
             else:
                 ingredients.append(ingredient)
 
