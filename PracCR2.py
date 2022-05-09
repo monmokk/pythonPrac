@@ -16,4 +16,7 @@ cocktail_page = soup.find("script", {"type": "application/ld+json"})
 # string_cocktail_page = cocktail_page.text  # HTML 요소 내 JSON으로 작성된 부분 문자열화
 # dict_result = json.loads(string_cocktail_page)  # 문자열화한 결과를 다시 JSON으로 변환
 
+
+
+
 print(cocktail_page)
